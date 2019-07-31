@@ -11,5 +11,10 @@ pipeline {
         sh 'ls -l'
       }
     }
+    stage('step3') {
+      steps {
+        sh 'exit 565'
+      }
+    }
   }
 }
