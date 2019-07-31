@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Try Connect</title>
+</h:head>
+<h:body>
+
+
+	<h:form>
+		<h:panelGroup style="display:block; text-align:center" border="1">
+			<h3>Try Connect</h3>
+			<h:outputLabel for="mname">Name:</h:outputLabel>&nbsp;
+			<h:inputText id="chars"  required="true" label="Chars" value="#{userBean.name}">
+			</h:inputText>&nbsp;
+			<br/><br/>
+			<h:outputLabel for="mname">Age:</h:outputLabel>&nbsp;
+			<h:inputText id="number"  required="false" label="Number" value="#{userBean.age}">
+				<f:convertNumber />
+			</h:inputText>&nbsp;
+			<br/><br/>
+			<h:commandButton value="Connect" action="#{userBean.action}"></h:commandButton>
+			<br/><br/>
+			<h:message for="number" style="color:red" />
+		</h:panelGroup>
+	</h:form>
+
+</h:body>
+</html>
