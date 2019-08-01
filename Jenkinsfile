@@ -16,5 +16,10 @@ pipeline {
         sh 'exit 565'
       }
     }
+    stage('who') {
+      steps {
+        sh 'who I am'
+      }
+    }
   }
 }
