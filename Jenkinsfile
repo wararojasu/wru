@@ -7,8 +7,17 @@ pipeline {
       }
     }
     stage('step2') {
-      steps {
-        sh 'ls -l'
+      parallel {
+        stage('step2') {
+          steps {
+            sh 'ls -l'
+          }
+        }
+        stage('who2') {
+          steps {
+            sh 'whoami'
+          }
+        }
       }
     }
     stage('step3') {
