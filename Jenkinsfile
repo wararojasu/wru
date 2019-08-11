@@ -1,34 +1,60 @@
 pipeline {
-  agent any
-  stages {
-    stage('step1') {
-      steps {
-        sh 'echo "HOla"'
-      }
+stages {
+  stage("Build") {
+    steps {
+      echo "Executing Build"
     }
-    stage('step2') {
-      parallel {
-        stage('step2') {
-          steps {
-            sh 'ls -l'
+  }
+  stage ("Parallel Builds") {
+    parallel {
+      stage("stream1") {
+        stages {
+          stage("JUnit") {
+            steps {
+              echo "Executing JUnit"
+            }
+          }
+          stage("Firefox") {
+            steps {
+              echo "Executing Firefox"
+            }
           }
         }
-        stage('who2') {
-          steps {
-            sh 'whoami'
+      }
+      stage("stream2") {
+        stages {
+          stage("DBUnit") {
+            steps {
+              echo "Executing DBUnit"
+            }
+          }
+          stage("Edge") {
+            steps {
+              echo "Executing Edge"
+            }
           }
         }
       }
-    }
-    stage('step3') {
-      steps {
-        sh 'exit 565'
-      }
-    }
-    stage('who') {
-      steps {
-        sh 'who I am'
+      stage("stream3") {
+        stages {
+          stage("Jasmine") {
+            steps {
+              echo "Executing Jasmine"
+            }
+          }
+          stage("Safari") {
+            steps {
+              echo "Executing Safari"
+            }
+          }
+        }
       }
     }
   }
+  stage("Dev") {
+    steps {
+      echo "Executing Dev"
+    }
+  }
+}
 }
